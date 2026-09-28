@@ -1,0 +1,272 @@
+/* =========================================================
+   CUADERNO DE TAREAS — sistema de diseño
+   Paleta tipo "cuaderno": papel cálido + tinta verde pino.
+   ========================================================= */
+
+:root {
+  --papel: #f3f5ef;
+  --papel-alto: #fbfbf8;
+  --tinta: #1e2a28;
+  --tinta-suave: #5c6a63;
+  --linea: #dcd9cc;
+
+  --pino: #3f6b5c;
+  --pino-oscuro: #2c4d42;
+  --pino-tenue: #dfe9e2;
+
+  --ocre: #b5652f;
+  --ocre-tenue: #f3e3d5;
+
+  --rojo: #a3402f;
+  --rojo-tenue: #f3ded9;
+
+  --fuente-titulo: 'Fraunces', Georgia, serif;
+  --fuente-texto: 'Inter', system-ui, sans-serif;
+
+  --radio: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fuente-texto);
+}
+
+h1,
+h2,
+h3,
+.titulo-tarea {
+  font-family: var(--fuente-titulo);
+  color: var(--tinta);
+  font-weight: 600;
+}
+
+a {
+  color: var(--pino-oscuro);
+}
+
+/* ---------- Barra de navegación ---------- */
+
+.app-navbar {
+  background-color: var(--papel-alto);
+  border-bottom: 1px solid var(--linea);
+  padding: 1rem 0;
+}
+
+.app-navbar .marca {
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.app-navbar .marca:hover {
+  color: var(--pino-oscuro);
+}
+
+.app-navbar .enlace-nav {
+  font-family: var(--fuente-texto);
+  font-weight: 500;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  padding: 0.4rem 0.2rem;
+  margin-left: 1.5rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.app-navbar .enlace-nav:hover {
+  color: var(--tinta);
+}
+
+.app-navbar .enlace-nav.activo {
+  color: var(--pino-oscuro);
+  border-bottom-color: var(--pino);
+}
+
+/* ---------- Botones propios ---------- */
+
+.btn-pino {
+  background-color: var(--pino);
+  border: 1px solid var(--pino);
+  color: #fff;
+  font-weight: 500;
+  border-radius: var(--radio);
+  padding: 0.55rem 1.1rem;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-pino:hover {
+  background-color: var(--pino-oscuro);
+  border-color: var(--pino-oscuro);
+  color: #fff;
+}
+
+.btn-contorno {
+  background-color: transparent;
+  border: 1px solid var(--linea);
+  color: var(--tinta);
+  font-weight: 500;
+  border-radius: var(--radio);
+  padding: 0.55rem 1.1rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-contorno:hover {
+  border-color: var(--tinta-suave);
+  background-color: var(--papel-alto);
+  color: var(--tinta);
+}
+
+.btn-peligro {
+  background-color: transparent;
+  border: 1px solid var(--rojo-tenue);
+  color: var(--rojo);
+  font-weight: 500;
+  border-radius: var(--radio);
+  padding: 0.55rem 1.1rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-peligro:hover {
+  background-color: var(--rojo-tenue);
+  border-color: var(--rojo);
+  color: var(--rojo);
+}
+
+/* ---------- Lista de tareas (estilo cuaderno, no tarjetas) ---------- */
+
+.lista-tareas {
+  border-top: 1px solid var(--linea);
+}
+
+.fila-tarea {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0.25rem;
+  border-bottom: 1px solid var(--linea);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.fila-tarea:hover {
+  background-color: var(--papel-alto);
+  color: inherit;
+}
+
+.punto-estado {
+  flex-shrink: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  margin-top: 0.45rem;
+  border: 2px solid var(--ocre);
+  background-color: transparent;
+}
+
+.punto-estado.completa {
+  border-color: var(--pino);
+  background-color: var(--pino);
+}
+
+.fila-tarea .contenido {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.fila-tarea .titulo-tarea {
+  font-size: 1.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.fila-tarea .descripcion-corta {
+  color: var(--tinta-suave);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.etiqueta-estado {
+  font-family: var(--fuente-texto);
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.etiqueta-estado.completa {
+  background-color: var(--pino-tenue);
+  color: var(--pino-oscuro);
+}
+
+.etiqueta-estado.incompleta {
+  background-color: var(--ocre-tenue);
+  color: var(--ocre);
+}
+
+/* ---------- Tarjetas de contenido (detalle, formularios) ---------- */
+
+.tarjeta-papel {
+  background-color: var(--papel-alto);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 2rem;
+}
+
+/* ---------- Formularios ---------- */
+
+.form-control,
+.form-select {
+  border-color: var(--linea);
+  border-radius: var(--radio);
+  font-family: var(--fuente-texto);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--pino);
+  box-shadow: 0 0 0 0.2rem var(--pino-tenue);
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+/* ---------- Animación única de entrada ---------- */
+
+.aparecer {
+  animation: aparecerSuave 0.35s ease;
+}
+
+@keyframes aparecerSuave {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Respeta la preferencia de menos movimiento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .aparecer,
+  .fila-tarea,
+  .btn-pino,
+  .btn-contorno,
+  .btn-peligro {
+    animation: none !important;
+    transition: none !important;
+  }
+}
